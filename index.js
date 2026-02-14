@@ -8,6 +8,7 @@ const kv = require("./structs/kv.js");
 const config = JSON.parse(fs.readFileSync("./Config/config.json").toString());
 const WebSocket = require('ws');
 const https = require("https");
+const cors = require("cors");
 
 const log = require("./structs/log.js");
 const error = require("./structs/error.js");
@@ -16,6 +17,7 @@ const CheckForUpdate = require("./structs/checkforupdate.js");
 const AutoBackendRestart = require("./structs/autobackendrestart.js");
 
 const app = express();
+app.use(cors({ origin: "*" }));
 
 if (!fs.existsSync("./ClientSettings")) fs.mkdirSync("./ClientSettings");
 
